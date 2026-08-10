@@ -20,6 +20,11 @@ api_id = int(input("api_id: ").strip())
 api_hash = input("api_hash: ").strip()
 
 with TelegramClient(StringSession(), api_id, api_hash) as client:
-    print("\n--- SESSION STRING (buni GitHub Secrets -> TELEGRAM_SESSION ga qo'ying) ---\n")
-    print(client.session.save())
-    print("\n--- Diqqat: bu stringni hech kimga bermang ---\n")
+    session_string = client.session.save()
+
+    with open("session.txt", "w", encoding="utf-8") as f:
+        f.write(session_string)
+
+    print("\n--- Session string 'session.txt' fayliga yozildi ---")
+    print("--- Uni Notepad'da oching, Ctrl+A -> Ctrl+C qiling va GitHub Secrets'ga shu tarzda qo'ying ---")
+    print("--- Diqqat: bu faylni hech kimga bermang, ishlatib bo'lgach o'chirib tashlang ---\n")
